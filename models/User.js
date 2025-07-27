@@ -4,29 +4,26 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        min:3,    
-        max:256,
-    
+        minlength: 3,    
+        maxlength: 256,
     },
     email: {
         type: String,
         required: true,
-        min:6,    
-        max:256,
-    
+        minlength: 6,    
+        maxlength: 256,
+        match: [/.+@.+\..+/, "Please enter a valid email address"]
     },
     password: {
         type: String,
         required: true,
-        min:6,    
-        max:1024,
-    
+        minlength: 6,    
+        maxlength: 1024,
     },
-    date: {
+    createdAt: {
         type: Date,
         default: Date.now
-
     }
-})
+});
 
 module.exports = mongoose.model('User', userSchema);
